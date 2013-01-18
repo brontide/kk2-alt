@@ -142,9 +142,10 @@ CameraStab:
 cam22:	b16cmp CamPitchGain, Temp
 	brne cam23
 	rjmp cam20
-cam23:	
-	b16mov Out7, CamRoll
-	b16mov Out8, CamPitch
+
+cam23:
+	b16sub Out7, CamRoll, CamPitch	
+	b16add Out8, CamRoll, CamPitch
 
 	b16mov Offset7, CamRollOffset
 	b16mov Offset8, CamPitchOffset

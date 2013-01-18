@@ -162,6 +162,13 @@ FixedPointVariableEnumerate168 AccXfilter
 FixedPointVariableEnumerate168 AccYfilter
 FixedPointVariableEnumerate168 AccZfilter
 
+FixedPointVariableEnumerate168 CamRollGain
+FixedPointVariableEnumerate168 CamRollOffset
+FixedPointVariableEnumerate168 CamPitchGain
+FixedPointVariableEnumerate168 CamPitchOffset
+FixedPointVariableEnumerate168 CamRoll
+FixedPointVariableEnumerate168 CamPitch
+
 FixedPointVariableEnumerate824 Theta
 FixedPointVariableEnumerate824 Sine
 FixedPointVariableEnumerate824 Cosine
@@ -368,6 +375,11 @@ EEVariableEnumerate8 eeSelfLevelType		;true=Stick command  false=Aux    ;do not 
 EEVariableEnumerate8 eeLinkRollPitch		;true=on  false=off 
 EEVariableEnumerate8 eeAutoDisarm		;true=on  false=off
 EEVariableEnumerate8 eeCppmOn			;true=on  false=off
+
+EEVariableEnumerate16 eeCamRollGain		;do not change the order of these variables, works as an array
+EEVariableEnumerate16 eeCamRollOffset
+EEVariableEnumerate16 eeCamPitchGain
+EEVariableEnumerate16 eeCamPitchOffset
 
 EEVariableEnumerate8 eeSensorsCalibrated	
 

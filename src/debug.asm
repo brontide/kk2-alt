@@ -3,6 +3,10 @@
 
 DebugMeny:
 
+	ret
+
+/*
+
 bbb30:	call LcdClear
 	
 	lrv PixelType, 1
@@ -141,7 +145,6 @@ ttt15:	.db "BatteryVoltage:",0
 ttt16:	.db "VectorLen: ",0
 
 
-/*
 
 debugCU:
 
@@ -399,7 +402,7 @@ ba1:	dec t
 	ret
 
 
-*/
+
 
 
 
@@ -443,5 +446,5 @@ hex2:	ldz hex1*2
 hex1:	.db "0123456789ABCDEF"
 
 
-
+*/
 

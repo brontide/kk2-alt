@@ -4,8 +4,8 @@
 ;best viewed with a TAB-setting of 8 and monospace font.
 
 
-
-.include "m324Pdef.inc"
+; Commented out next line so that it builds in AVR Studio 6
+;.include "m324Pdef.inc"
 .include "macros.inc"
 .include "miscmacros.inc"
 .include "variables.asm"
@@ -132,6 +132,7 @@ ma1:
 	call Imu
 	call HeightDampening
 	call Mixer
+	call CameraStab
 	call Beeper
 	call Lva
 	call PwmEnd
@@ -185,7 +186,7 @@ ma6:
 
 	rjmp ma2
 
-
+.include "camstab.asm"
 .include "trigonometry.asm"
 .include "cppmsettings.asm"
 .include "checkrx.asm"

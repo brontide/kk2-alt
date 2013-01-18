@@ -165,6 +165,32 @@ fli8:	b16store_array FilteredOut1, Temp
 	b16mov AccTrimPitch, Temp
 
 
+
+	ldz eeCamRollGain
+	call fli2
+	call fli3
+	b16mov CamRollGain, Temp
+
+	ldz eeCamRollOffset
+	call fli2
+	call fli9
+	b16mov CamRollOffset, Temp
+
+	ldz eeCamPitchGain
+	call fli2
+	call fli3
+	b16mov CamPitchGain, Temp
+
+	ldz eeCamPitchOffset
+	call fli2
+	call fli9
+	b16mov CamPitchOffset, Temp
+
+
+
+
+
+
 	ldz EeSensorCalData		;load calibration data
 
 	call GetEeVariable168
@@ -272,6 +298,9 @@ fli5:	b16ldi Temper, 113.664	;most limit values (0-100%) are scaled with 113.664
 	b16mul Temp, Temp, Temper
 	ret
 
+fli9:	b16ldi Temper, 44.4
+	b16mul Temp, Temp, Temper
+	ret
 
 	;---
 

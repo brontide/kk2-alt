@@ -21,7 +21,7 @@ EeInit:
 
 	call ReadEeprom
 	adiw z, 1
-	cpi t, 0x03
+	cpi t, 0x05
 	brne eei1
 
 	ret		;Yes, return
@@ -125,6 +125,18 @@ eei8:	movw z, y
 	ldz eeCppmAux
 	call StoreEeVariable8
 
+	ldx 0
+	ldz eeCamRollGain
+	call StoreEeVariable16
+	ldx 50
+	ldz eeCamRollOffset
+	call StoreEeVariable16
+	ldx 0
+	ldz eeCamPitchGain
+	call StoreEeVariable16
+	ldx 50
+	ldz eeCamPitchOffset
+	call StoreEeVariable16
 
 	setflagtrue xl
 	ldz eeSelfLevelType
@@ -158,7 +170,7 @@ eei8:	movw z, y
 	ldi t, 0x73
 	call WriteEeprom
 	adiw z, 1
-	ldi t, 0x03
+	ldi t, 0x05
 	call WriteEeprom
 	adiw z, 1
 

@@ -7,7 +7,7 @@ men23:	ldy men1 * 2
 	lds xl, MainMenuListYposSave
 	lds xh, MainMenuCursorYposSave
 
-	ldi t, 14
+	ldi t, 15
 
 	call Menu
 
@@ -50,6 +50,7 @@ men1:	.db "PI Editor           "
 	.db "Stick Scaling       "
 	.db "Misc. Settings      "
 	.db "Self-level Settings "
+	.db "Camera Stab Settings"
 	.db "Sensor Test         "
 	.db "ACC Calibration     "
 	.db "CPPM settings       "
@@ -66,6 +67,7 @@ men18:	.dw PiEditor
 	.dw SettingsA
 	.dw SettingsB
 	.dw SelflevelSettings
+	.dw CameraStabSetup
 	.dw SensorTest
 	.dw CalibrateSensors
 	.dw CppmSettings

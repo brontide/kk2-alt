@@ -4,7 +4,8 @@
 .def TargetY		=r17
 
 HilightRectangle:
-	PushAll
+;	PushAll
+	push r17
 
 	lds TargetY, Y2
 
@@ -20,7 +21,8 @@ Hili1:	lds t, Y1
 	cp t, TargetY
 	brlo Hili1
 
-	PopAll
+;	PopAll
+	pop r17
 	ret
 	
 .undef TargetY
@@ -32,7 +34,11 @@ Hili1:	lds t, Y1
 .def 	Y2r = r20
 
 Rectangle:
-	PushAll
+;	PushAll
+	push r17
+	push r18
+	push r19
+	push r20
 
 	lds X1r, X1
 	lds Y1r, Y1
@@ -54,7 +60,11 @@ Rectangle:
 	sts Y1, Y1r
 	call Bresenham
 
-	PopAll
+;	PopAll
+	pop r20
+	pop r19
+	pop r18
+	pop r17
 	ret
 
 
@@ -70,7 +80,14 @@ Rectangle:
 .def Digit		=r19
 
 Print16Signed:
-	PushAll
+;	PushAll
+	push xl
+	push xh
+	push yl
+	push yh
+	push r17
+	push r18
+	push r19
 	
 	mov t, xl
 	or t, xh
@@ -128,7 +145,15 @@ print12:mov t, Digit		;Digit to ASCII
 print11:dec Counter		;more digits?
 	brne print8
 
-print13:PopAll			;no, exit
+print13:;PopAll			;no, exit
+	pop r19
+	pop r18
+	pop r17
+	pop yh
+	pop yl
+	pop xh
+	pop xl
+
 	ret
 
 
@@ -164,7 +189,14 @@ print1: ret
 
 
 PrintChar:
-	PushAll
+;	PushAll
+	push xl
+	push xh
+	push zl
+	push zh
+	push r17
+	push r18
+	push r19
 
 	lds xl, FontSelector	;special cases for the mangled 12x16 font
 	cpi xl, f12x16
@@ -198,7 +230,14 @@ pp4:
 
 	rcall pp1
 
-	PopAll
+;	PopAll
+	pop r19
+	pop r18
+	pop r17
+	pop zh
+	pop zl
+	pop xh
+	pop xl
 	ret
 
 TabCh:	.db low(font4x6*2), high(font4x6*2), 4, 6, 4, 0
@@ -258,7 +297,13 @@ Sprite:			;Z = bitmap address
 .def	Bits		=r20
 
 
-	PushAll
+;	PushAll
+	push xl
+	push yl
+	push r17
+	push r18
+	push r19
+	push r20
 
 	ldi BitCounter, 1
 
@@ -296,8 +341,14 @@ sp3:	lds t, XPos		;XPos = XPos + 1
 	dec YCounter		;More Y pixels?
 	brne sp1		
 
-	PopAll
-
+;	PopAll
+	pop r20
+	pop r19
+	pop r18
+	pop r17
+	pop yl
+	pop xl
+	
 	ret
 
 
@@ -441,7 +492,11 @@ op6:	PopAll
 
 
 SetPixel:				; Destroys: t
-	PushAll
+;	PushAll
+	push zl
+	push zh
+	push xl
+	push xh
 
 	ldi zl, low(LcdBuffer)		;Z = LcdBuffer + int(Ypos/8)*128 + Xpos
 	ldi zh, high(LcdBuffer)
@@ -495,7 +550,11 @@ qq8: 	eor xl, xh
 qq9:	st z, xl
 	
 
-	PopAll
+;	PopAll
+	pop xh
+	pop xl
+	pop zh
+	pop zl
 
 	ret
 
@@ -505,7 +564,13 @@ qq9:	st z, xl
 
 	
 LcdUpdate:
-	PushAll
+;	PushAll
+	push xl
+	push xh
+	push yl
+	push yh
+	push zl
+	push zh
 			
 	ldi zl, low(lcd_cd*2)	;refresh LCD control registers
 	ldi zh, high(lcd_cd*2)
@@ -550,7 +615,13 @@ qq4:	ld yl, z+
 	cpi xl, 0xb8
 	brne qq3
 
-	PopAll
+;	PopAll
+	pop zh
+	pop zl
+	pop yh
+	pop yl
+	pop xh
+	pop xl
 	ret
 
 lcd_cd:
@@ -566,7 +637,11 @@ lcd_cd:
 
 
 LcdClear:
-	PushAll
+;	PushAll
+	push xl
+	push xh
+	push zl
+	push zh
 
 	ldi zl, low(LcdBuffer)
 	ldi zh, high(LcdBuffer)
@@ -580,7 +655,11 @@ qq5:	st z+, t
 	sbiw xh:xl, 1 
 	brne qq5
 
-	PopAll
+;	PopAll
+	pop zh
+	pop zl
+	pop xh
+	pop xl
 	ret
 	
 

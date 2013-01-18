@@ -57,7 +57,7 @@ men1:	.db "PI Editor           "
 	.db "Mixer Editor        "
 	.db "Show Motor Layout   "
 	.db "Load Motor Layout   "
-	.db "Debug               "
+;	.db "Debug               "
 	.db "Factory Reset       "
 
 
@@ -74,7 +74,7 @@ men18:	.dw PiEditor
 	.dw MixerEditor
 	.dw MotorLayout
 	.dw LoadMixer
-	.dw DebugMeny
+;	.dw DebugMeny
 	.dw FactoryReset
 
 

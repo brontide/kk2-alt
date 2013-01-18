@@ -3,7 +3,11 @@
 
 NumberEdit:
 
-	PushAll
+;	PushAll
+	push xl
+	push xh
+	push r17
+	push r18
 
 	ldi TypRate, 1
 
@@ -112,7 +116,12 @@ num9:	cpi t,0x01		;DONE
 	mov r0, xl
 	mov r1, xh	
 
-	PopAll
+;	PopAll
+	pop r18
+	pop r17
+	pop xh
+	pop xl
+
 	ret
 
 num10:	rjmp num2

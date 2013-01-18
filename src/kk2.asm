@@ -210,7 +210,7 @@ ma6:
 .include "flightdisplay.asm"
 .include "arm.asm"
 .include "flightinit.asm"
-.include "debug.asm"
+;.include "debug.asm"
 .include "pieditor.asm"
 .include "numedit.asm"
 .include "mixedit.asm"

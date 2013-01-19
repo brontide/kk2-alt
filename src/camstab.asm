@@ -164,9 +164,7 @@ cam22:	b16cmp CamPitchGain, Temp
 	brne cam23
 	rjmp cam20
 cam23:
-	ldz eeCamServoMixing			
-	call GetEeVariable8
-	brflagfalse xl, cam24			; jump for regular output, otherwise differential mixing
+	rvbrflagfalse CamServoMixing, cam24			; jump for regular output, otherwise differential mixing
 	b16sub Out7, CamRoll, CamPitch	
 	b16add Out8, CamRoll, CamPitch
 	rjmp cam25

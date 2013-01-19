@@ -169,6 +169,7 @@ FixedPointVariableEnumerate168 CamPitchOffset
 FixedPointVariableEnumerate168 CamRoll
 FixedPointVariableEnumerate168 CamPitch
 
+
 FixedPointVariableEnumerate824 Theta
 FixedPointVariableEnumerate824 Sine
 FixedPointVariableEnumerate824 Cosine
@@ -315,6 +316,7 @@ RamVariableEnumerate8 flagDebugBuzzerOn
 
 RamVariableEnumerate8 flagGyrosCalibrated
 
+RamVariableEnumerate8 CamServoMixing
 
 RamVariableEnumerate8 CppmPulseStartL
 RamVariableEnumerate8 CppmPulseStartH

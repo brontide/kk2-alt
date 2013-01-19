@@ -186,8 +186,9 @@ fli8:	b16store_array FilteredOut1, Temp
 	call fli9
 	b16mov CamPitchOffset, Temp
 
-
-
+	ldz eeCamServoMixing
+	call ReadEeprom
+	sts CamServoMixing, t
 
 
 

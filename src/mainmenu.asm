@@ -7,7 +7,7 @@ men23:	ldy men1 * 2
 	lds xl, MainMenuListYposSave
 	lds xh, MainMenuCursorYposSave
 
-	ldi t, 15
+	ldi t, 14	; number of menu items
 
 	call Menu
 

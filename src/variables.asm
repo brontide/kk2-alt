@@ -381,6 +381,8 @@ EEVariableEnumerate16 eeCamRollOffset
 EEVariableEnumerate16 eeCamPitchGain
 EEVariableEnumerate16 eeCamPitchOffset
 
+EEVariableEnumerate8 eeCamServoMixing		;true=vtail/differential mixing false=vanilla servo output
+
 EEVariableEnumerate8 eeSensorsCalibrated	
 
 

@@ -21,22 +21,17 @@ EeInit:
 
 	call ReadEeprom
 	adiw z, 1
-	cpi t, 0x05
+	cpi t, 0x06
 	brne eei1
 
 	ret		;Yes, return
 
 eei1:			;no, initalize
 
-	ldx EeMixerTable	;Mixertable
-	ldy eei2 * 2
+	ldz EeMixerTable	;Mixertable
+	ldx 0
 	ldi Counter, 64
-eei3:	movw z, y
-	lpm t, z
-	movw z, x
-	call WriteEeprom
-	adiw x, 1
-	adiw y, 1
+eei3:	call StoreEeVariable8
 	dec Counter
 	brne eei3
 
@@ -158,6 +153,10 @@ eei8:	movw z, y
 	ldz eeCppmOn
 	call StoreEeVariable8
 
+	setflagfalse xl
+	ldz eeCamServoMixing
+	call StoreEeVariable8
+
 
 
 	ldz 0			;EE signature
@@ -170,7 +169,7 @@ eei8:	movw z, y
 	ldi t, 0x73
 	call WriteEeprom
 	adiw z, 1
-	ldi t, 0x05
+	ldi t, 0x06
 	call WriteEeprom
 	adiw z, 1
 
@@ -183,12 +182,16 @@ eei6:	call Beep
 
 	call SensorTest
 
+	call LoadMixer
+
+	call SettingsC
+
 	ret
 
 
 
 
-
+/*
 eei2:	.db  100, 0  , 100, 100, 0  , 3  , 0  , 0
 	.db  100, 100, 0  ,-100, 0  , 3  , 0  , 0
 	.db  100, 0  ,-100, 100, 0  , 3  , 0  , 0
@@ -197,7 +200,7 @@ eei2:	.db  100, 0  , 100, 100, 0  , 3  , 0  , 0
 	.db  0  , 0  , 0  , 0  , 0  , 0  , 0  , 0
 	.db  0  , 0  , 0  , 0  , 0  , 0  , 0  , 0
 	.db  0  , 0  , 0  , 0  , 0  , 0  , 0  , 0
-	
+*/	
 
 
 eei4:	.dw 50,100,25,20

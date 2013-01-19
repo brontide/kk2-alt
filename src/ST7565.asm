@@ -85,6 +85,8 @@ Print16Signed:
 	push xh
 	push yl
 	push yh
+	push zl
+	push zh
 	push r17
 	push r18
 	push r19
@@ -145,10 +147,12 @@ print12:mov t, Digit		;Digit to ASCII
 print11:dec Counter		;more digits?
 	brne print8
 
-print13:;PopAll			;no, exit
-	pop r19
+;print13:PopAll			;no, exit
+print13:pop r19
 	pop r18
 	pop r17
+	pop zh
+	pop zl
 	pop yh
 	pop yl
 	pop xh
@@ -192,6 +196,7 @@ PrintChar:
 ;	PushAll
 	push xl
 	push xh
+	push yl
 	push zl
 	push zh
 	push r17
@@ -236,6 +241,7 @@ pp4:
 	pop r17
 	pop zh
 	pop zl
+	pop yl
 	pop xh
 	pop xl
 	ret

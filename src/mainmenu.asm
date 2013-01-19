@@ -7,7 +7,7 @@ men23:	ldy men1 * 2
 	lds xl, MainMenuListYposSave
 	lds xh, MainMenuCursorYposSave
 
-	ldi t, 14	; number of menu items
+	ldi t, 15	; number of menu items
 
 	call Menu
 
@@ -59,6 +59,7 @@ men1:	.db "PI Editor           "
 	.db "Load Motor Layout   "
 ;	.db "Debug               "
 	.db "Factory Reset       "
+	.db "Show Version Info   "
 
 
 men18:	.dw PiEditor
@@ -76,5 +77,6 @@ men18:	.dw PiEditor
 	.dw LoadMixer
 ;	.dw DebugMeny
 	.dw FactoryReset
+	.dw ShowVersion
 
 
